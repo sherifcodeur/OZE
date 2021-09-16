@@ -1,0 +1,23 @@
+{
+  "name": "oze-cli",
+  "version": "1.0.0",
+  "description": "a CLI for creating a starter App in NodeJS expressJS MongoDB",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "NodeJS",
+    "expressJS",
+    "MongoDB",
+    "javascript"
+  ],
+  "bin": {
+    "oze": "./bin/index.js"
+  },
+  "author": "sherifcodeur Echcharif El Idrissi Ismail",
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^17.1.1"
+  }
+}
