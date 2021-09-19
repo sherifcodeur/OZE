@@ -44,5 +44,5 @@ if(options.controllers){
 
 if(options.file){
 
-    filegenerate.createFile("pico.js","plois").then(console.log("bien cree")).catch(err=>console.log(err))
+    filegenerate.createFile("Products.js","models").then(console.log("bien cree")).catch(err=>console.log(err))
 }

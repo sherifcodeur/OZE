@@ -5,15 +5,13 @@
 // import dependencies
 
 const fs = require('fs')
-const {
-    createInflate
-} = require('zlib')
+
 
 // all names of directories we want to create for application
-const directories = ["controllers", "models", "middlewares", ""]
+const directories = ["controllers", "models", "middlewares", "views","services"]
 
 
-
+// create a directory at the root level of the app
 const createDirectory = (nameOfDirectory) => {
 
     return new Promise((resolve, reject) => {
@@ -46,7 +44,7 @@ const createDirectory = (nameOfDirectory) => {
 
 }
 
-
+// create a file in a directory or directly in the root if not specified the directory
 const createFile = (nameOfFile, nameOfDirectory = null) => {
 
 
@@ -106,70 +104,7 @@ const createFile = (nameOfFile, nameOfDirectory = null) => {
 
 
 
-// // check if a directory exists with a given name and create it if it doesn't
-//   makeDirectory =  (nameOfDirectory) => {   
 
-//     // check if we can access the directory
-//     fs.access(nameOfDirectory,(error)=>{
-
-
-//         if(error){
-
-//             console.log("directory doesn't exist")
-
-//             fs.mkdir(nameOfDirectory,(err)=>{
-
-//                 if(err){
-
-//                     console.log("error1",err)
-//                 }else{
-
-//                     console.log("the controllers directory has been created")
-//                 }
-//             });
-//         }else{
-//             console.log("the directory exists")
-//         }
-
-//     })
-
-
-
-
-
-
-
-
-// }
-
-
-// // create a file if it doesn't exists
-// createFile = async (nameOfFile,directoryPath = null)=>{
-
-//     let separator = ''
-
-//     if(directoryPath){
-//       await  makeDirectory(directoryPath)
-//       separator ='/'
-//     }else{
-//         directoryPath = '';
-//     }
-
-//     fs.appendFile(`${directoryPath}${separator}${nameOfFile}`,'',(err)=>{
-
-//         if(err){
-
-//             console.log("on passe ici ou koi",err)
-
-//         }else{
-
-//             console.log("appended existing file or ")
-
-//         }
-//     })
-
-
-// }
 
 
 module.exports = {
