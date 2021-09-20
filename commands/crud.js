@@ -16,9 +16,10 @@ const createDirectory = (nameOfDirectory) => {
 
     return new Promise((resolve, reject) => {
 
+        // we check if we can access the directory(if it exists)
         fs.access(nameOfDirectory, (error) => {
 
-
+            // it doesn't exist we create it
             if (error) {
                 fs.mkdir(nameOfDirectory, (err) => {
 
@@ -35,7 +36,7 @@ const createDirectory = (nameOfDirectory) => {
 
             } else {
 
-                reject(Error(error))
+                resolve("the controller already exist")
             }
         })
 
@@ -102,12 +103,29 @@ const createFile = (nameOfFile, nameOfDirectory = null) => {
 }
 
 
+const createModel = (modelToCreate)=>{
+
+    createFile(modelToCreate,"models").then(console.log("bien cree")).catch(err=>console.log(err))
+
+
+}
+
+const createView = (viewToCreate)=>{
+
+    createFile(viewToCreate,"views").then(console.log("view bien cree")).catch(err=>console.log(err))
+}
+
+
+const createController = (controllerToCreate)=>{
+
+    createFile(controllerToCreate,"controllers").then(console.log("controller bien cree")).catch(err=>console.log(err))
+}
+
 
 
 
 
 
 module.exports = {
-    createDirectory,
-    createFile
+   createModel
 }

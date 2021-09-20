@@ -13,7 +13,7 @@ const options = yargs
                 .option("n", { alias: "name", describe: "Your name", type: "string", demandOption: false })
                 .option("l",{alias:"languages",describe:"list all supported languages",type:"boolean",demandOption:false})
                 .option("c",{alias:"controllers",describe:"create a controller directory",type:"boolean",demandOption:false})
-                .option("a",{alias:"file",describe:"create a file in a directory",type:"boolean",demandOption:false})
+                .option("m",{alias:"file",describe:"create a file in a directory",type:"string",demandOption:false})
                 .help(true)
                 .argv;
 
@@ -44,5 +44,5 @@ if(options.controllers){
 
 if(options.file){
 
-    filegenerate.createFile("Products.js","models").then(console.log("bien cree")).catch(err=>console.log(err))
+    filegenerate.createModel(options.file)
 }
