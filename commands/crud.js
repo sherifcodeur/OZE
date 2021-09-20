@@ -5,10 +5,14 @@
 // import dependencies
 
 const fs = require('fs')
+const path = require('path')
+
+const renderModelTemplate = require('../templates/model')
+const renderControllerTemplate = require('../templates/controller')
 
 
 // all names of directories we want to create for application
-const directories = ["controllers", "models", "middlewares", "views","services"]
+const directories = ["controllers", "models", "middlewares", "views","services","routes"]
 
 
 // create a directory at the root level of the app
@@ -105,20 +109,84 @@ const createFile = (nameOfFile, nameOfDirectory = null) => {
 
 const createModel = (modelToCreate)=>{
 
-    createFile(modelToCreate,"models").then(console.log("bien cree")).catch(err=>console.log(err))
+    createFile(`${modelToCreate}.js`,"models")
+    .then(
+
+        res=>{
+
+            const pathfile = path.join(__dirname,`../models/${modelToCreate}.js`)
+            fs.writeFile(pathfile, renderModelTemplate(modelToCreate),(err)=>{
+
+                if(err){
+
+                    console.log(err)
+                }else{
+
+                    console.log("succes writing template")
+                }
+
+            })
+        
+        
+        }
+    )
+    .catch(err=>console.log(err))
 
 
 }
 
 const createView = (viewToCreate)=>{
 
-    createFile(viewToCreate,"views").then(console.log("view bien cree")).catch(err=>console.log(err))
+    createFile(`${viewToCreate}.js`,"views")
+    .then(res=>{
+
+        const pathfile = path.join(__dirname,`../views/${viewToCreate}.js`)
+
+        fs.writeFile(pathfile, renderViewTemplate(viewToCreate),(err)=>{
+
+            if(err){
+
+                console.log(err)
+            }else{
+
+                console.log("succes writing template")
+            }
+
+        })
+
+    })
+    .catch(err=>console.log(err))
 }
 
 
 const createController = (controllerToCreate)=>{
 
-    createFile(controllerToCreate,"controllers").then(console.log("controller bien cree")).catch(err=>console.log(err))
+    createFile(`${controllerToCreate}.js`,"controllers")
+    .then( res=>{
+
+        const pathfile = path.join(__dirname,`../controllers/${controllerToCreate}.js`)
+        fs.writeFile(pathfile, renderControllerTemplate(controllerToCreate),(err)=>{
+
+
+            if(err){
+
+                console.log(err)
+            }else{
+
+                console.log("succes writing template")
+            }
+
+
+
+        })
+       
+    }
+
+        
+
+
+    )
+    .catch(err=>console.log(err))
 }
 
 
@@ -127,5 +195,6 @@ const createController = (controllerToCreate)=>{
 
 
 module.exports = {
-   createModel
+   createModel,
+   createController,
 }

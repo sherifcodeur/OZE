@@ -11,9 +11,9 @@ const usage = "\n -n <name> the name"
 const options = yargs
                 .usage(usage)
                 .option("n", { alias: "name", describe: "Your name", type: "string", demandOption: false })
-                .option("l",{alias:"languages",describe:"list all supported languages",type:"boolean",demandOption:false})
-                .option("c",{alias:"controllers",describe:"create a controller directory",type:"boolean",demandOption:false})
-                .option("m",{alias:"file",describe:"create a file in a directory",type:"string",demandOption:false})
+                .option("l",{alias:"languages",describe:"list all supported languages",type:"boolean",demandOption:false}) 
+                .option("c",{alias:"controller",describe:"create a controller file based on model",type:"string",demandOption:false})               
+                .option("m",{alias:"model",describe:"create a file in a directory",type:"string",demandOption:false})
                 .help(true)
                 .argv;
 
@@ -34,15 +34,18 @@ if(options.languages){
     console.log(thelang);
 }
 
-if(options.controllers){
 
-   filegenerate.createDirectory("controllers")
-        .then(console.log("the file has been created"))
-        .catch(err=>console.log(err));
+
+if(options.model){
+
+    filegenerate.createModel(options.model)
 }
 
 
-if(options.file){
 
-    filegenerate.createModel(options.file)
+if(options.controller){
+
+    filegenerate.createController(options.controller)
 }
+
+
