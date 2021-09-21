@@ -14,6 +14,8 @@ const options = yargs
                 .option("l",{alias:"languages",describe:"list all supported languages",type:"boolean",demandOption:false}) 
                 .option("c",{alias:"controller",describe:"create a controller file based on model",type:"string",demandOption:false})               
                 .option("m",{alias:"model",describe:"create a file in a directory",type:"string",demandOption:false})
+                .option("r",{alias:"route",describe:"create the routes for the model in routes directory",type:"string",demandOption:false})
+                .option("s",{alias:"server",describe:"create a simple server with Node and express",type:"string",demandOption:false})
                 .help(true)
                 .argv;
 
@@ -37,17 +39,31 @@ if(options.languages){
 }
 
 
-
+// option for creating a model : usage -m <nameofmodel>
 if(options.model){
 
     filegenerate.createModel(options.model)
 }
 
 
-
+// option for creating a controller usage -c <nameofmodel>
 if(options.controller){
 
     filegenerate.createController(options.controller)
+}
+
+
+// option for creating a route usage -r <nameofmodel>
+if(options.route){
+
+    filegenerate.createRoute(options.route)
+}
+
+
+// option for creating a route usage -r <nameofmodel>
+if(options.server){
+
+    filegenerate.createServer(options.server)
 }
 
 

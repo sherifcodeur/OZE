@@ -9,6 +9,8 @@ const path = require('path')
 
 const renderModelTemplate = require('../templates/model')
 const renderControllerTemplate = require('../templates/controller')
+const renderRouteTemplate = require('../templates/route')
+const renderServerTemplate = require('../templates/server')
 
 
 // all names of directories we want to create for application
@@ -107,6 +109,7 @@ const createFile = (nameOfFile, nameOfDirectory = null) => {
 }
 
 
+// create a model - argument model name -if no models directory exists we create it
 const createModel = (modelToCreate)=>{
 
     createFile(`${modelToCreate}.js`,"models")
@@ -135,30 +138,31 @@ const createModel = (modelToCreate)=>{
 
 }
 
-const createView = (viewToCreate)=>{
+// const createView = (viewToCreate)=>{
 
-    createFile(`${viewToCreate}.js`,"views")
-    .then(res=>{
+//     createFile(`${viewToCreate}.js`,"views")
+//     .then(res=>{
 
-        const pathfile = path.join(__dirname,`../views/${viewToCreate}.js`)
+//         const pathfile = path.join(__dirname,`../views/${viewToCreate}.js`)
 
-        fs.writeFile(pathfile, renderViewTemplate(viewToCreate),(err)=>{
+//         fs.writeFile(pathfile, renderViewTemplate(viewToCreate),(err)=>{
 
-            if(err){
+//             if(err){
 
-                console.log(err)
-            }else{
+//                 console.log(err)
+//             }else{
 
-                console.log("succes writing template")
-            }
+//                 console.log("succes writing template")
+//             }
 
-        })
+//         })
 
-    })
-    .catch(err=>console.log(err))
-}
+//     })
+//     .catch(err=>console.log(err))
+// }
 
 
+// create a controller - crud - based on a model - if there is no controller directory we create it
 const createController = (controllerToCreate)=>{
 
     createFile(`${controllerToCreate}.js`,"controllers")
@@ -189,12 +193,70 @@ const createController = (controllerToCreate)=>{
     .catch(err=>console.log(err))
 }
 
+const createRoute = (modelName)=>{
+
+    createFile(`${modelName}Routes.js`,"routes")
+    .then( res=>{
+
+        const pathfile = path.join(__dirname,`../routes/${modelName}Routes.js`)
+        fs.writeFile(pathfile, renderRouteTemplate(modelName),(err)=>{
 
 
+            if(err){
+
+                console.log(err)
+            }else{
+
+                console.log("succes writing template")
+            }
+
+
+
+        })
+       
+    }      
+
+
+    )
+    .catch(err=>console.log(err))
+}
+
+
+/// create simple minimal server with express
+const createServer = (nameOfFile)=>{
+
+
+    createFile(`${nameOfFile}.js`)
+    .then(
+
+        res=>{
+
+            const pathfile = path.join(__dirname,`../${nameOfFile}.js`)
+            fs.writeFile(pathfile, renderServerTemplate(),(err)=>{
+
+                if(err){
+
+                    console.log(err)
+                }else{
+
+                    console.log("succes writing template")
+                }
+
+            })
+        
+        
+        }
+    )
+    .catch(err=>console.log(err))
+
+
+}
 
 
 
 module.exports = {
    createModel,
    createController,
+   createRoute,
+   createServer
 }
