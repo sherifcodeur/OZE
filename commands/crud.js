@@ -231,8 +231,10 @@ const createServer = (nameOfFile)=>{
 
         res=>{
 
-            const pathfile = path.join(__dirname,`../${nameOfFile}.js`)
-            fs.writeFile(pathfile, renderServerTemplate(),(err)=>{
+            // const pathfile = path.join(process.cwd(),`../${nameOfFile}.js`)
+
+            // console.log("pathfile",pathfile)
+            fs.writeFile(`${nameOfFile}.js`, renderServerTemplate(),(err)=>{
 
                 if(err){
 

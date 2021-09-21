@@ -14,7 +14,7 @@ const renderServerTemplate = () =>{
     //const companyRoutes = require('./routes/companyRoutes');
     
     // PORT defined in the env file
-    const PORT = process.env.PORT;
+    const PORT = process.env.PORT || 3000;
     
     
     // initializing express application
