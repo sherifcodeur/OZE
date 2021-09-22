@@ -17,6 +17,7 @@ const options = yargs
                 .option("r",{alias:"route",describe:"create the routes for the model in routes directory",type:"string",demandOption:false})
                 .option("s",{alias:"server",describe:"create a simple server with Node and express",type:"string",demandOption:false})
                 .option("x",{alias:"special",describe:"create env and gitignore files",type:"boolean",demandOption:false})
+                .option("d",{alias:"database",describe:"create database connexion file",type:"string",demandOption:false})
                 .help(true)
                 .argv;
 
@@ -73,6 +74,12 @@ if(options.special){
 
    
     filegenerate.createSpecialFiles()
+}
+
+
+if(options.database){
+
+    filegenerate.createDB(options.database)
 }
 
 

@@ -11,6 +11,7 @@ const renderModelTemplate = require('../templates/model')
 const renderControllerTemplate = require('../templates/controller')
 const renderRouteTemplate = require('../templates/route')
 const renderServerTemplate = require('../templates/server')
+const renderDatabaseTemplate = require('../templates/database')
 
 
 // all names of directories we want to create for application
@@ -312,11 +313,36 @@ MONGODB_URL = ""`
 
 }
 
+const createDB = (nameOfFile)=>{
+
+    createFile(`${nameOfFile}.js`,"database")
+    .then(
+
+
+        fs.writeFile(`${nameOfFile}.js`,renderDatabaseTemplate(),(err)=>{
+
+
+            if(err){
+
+                console.log(err)
+            }else{
+
+                console.log("succes writing database template")
+            }
+
+
+
+        })
+    )
+    .catch()
+
+}
 
 module.exports = {
    createModel,
    createController,
    createRoute,
    createServer,
-   createSpecialFiles
+   createSpecialFiles,
+   createDB
 }
