@@ -254,11 +254,69 @@ const createServer = (nameOfFile)=>{
 
 }
 
+// creates env and gitignore
+const createSpecialFiles = ()=>{
+
+   
+    // create env file
+    createFile(`.env`)
+    .then( 
+        res=>{
+
+            const data = `
+BASE_URL = "http://localhost"
+PORT = 5000
+MONGODB_URL = ""`
+
+            fs.writeFile(`.env`, data,(err)=>{
+
+                if(err){
+
+                    console.log(err)
+                }else{
+
+                    console.log("succes writing env file")
+                }
+
+            })
+        }
+        
+    )
+    .catch(err=>console.log("env file error",err))
+
+
+    // create gitignore file
+    createFile(`.gitignore`)
+    .then( 
+        res=>{
+
+            const data = `/node_modules`
+
+            fs.writeFile(`.gitignore`, data,(err)=>{
+
+                if(err){
+
+                    console.log(err)
+                }else{
+
+                    console.log("succes writing gitignore file")
+                }
+
+            })
+        }
+        
+    )
+    .catch(err=>console.log("gitignore file error",err))
+
+
+
+}
 
 
 module.exports = {
    createModel,
    createController,
    createRoute,
-   createServer
+   createServer,
+   createSpecialFiles
 }

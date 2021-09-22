@@ -16,6 +16,7 @@ const options = yargs
                 .option("m",{alias:"model",describe:"create a file in a directory",type:"string",demandOption:false})
                 .option("r",{alias:"route",describe:"create the routes for the model in routes directory",type:"string",demandOption:false})
                 .option("s",{alias:"server",describe:"create a simple server with Node and express",type:"string",demandOption:false})
+                .option("x",{alias:"special",describe:"create env and gitignore files",type:"boolean",demandOption:false})
                 .help(true)
                 .argv;
 
@@ -64,6 +65,14 @@ if(options.route){
 if(options.server){
 
     filegenerate.createServer(options.server)
+}
+
+
+// option for creating special files -env and gitignore usage -spe <nameofmodel>
+if(options.special){
+
+   
+    filegenerate.createSpecialFiles()
 }
 
 
