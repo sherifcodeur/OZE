@@ -291,7 +291,8 @@ MONGODB_URL = ""`
     .then( 
         res=>{
 
-            const data = `/node_modules`
+            const data = `/node_modules
+            .env`
 
             fs.writeFile(`.gitignore`, data,(err)=>{
 
