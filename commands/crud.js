@@ -117,8 +117,8 @@ const createModel = (modelToCreate)=>{
 
         res=>{
 
-            const pathfile = path.join(__dirname,`../models/${modelToCreate}.js`)
-            fs.writeFile(pathfile, renderModelTemplate(modelToCreate),(err)=>{
+           
+            fs.writeFile(`models/${modelToCreate}.js`, renderModelTemplate(modelToCreate),(err)=>{
 
                 if(err){
 
@@ -168,8 +168,8 @@ const createController = (controllerToCreate)=>{
     createFile(`${controllerToCreate}.js`,"controllers")
     .then( res=>{
 
-        const pathfile = path.join(__dirname,`../controllers/${controllerToCreate}.js`)
-        fs.writeFile(pathfile, renderControllerTemplate(controllerToCreate),(err)=>{
+       
+        fs.writeFile(`controllers/${controllerToCreate}.js`, renderControllerTemplate(controllerToCreate),(err)=>{
 
 
             if(err){
@@ -198,8 +198,8 @@ const createRoute = (modelName)=>{
     createFile(`${modelName}Routes.js`,"routes")
     .then( res=>{
 
-        const pathfile = path.join(__dirname,`../routes/${modelName}Routes.js`)
-        fs.writeFile(pathfile, renderRouteTemplate(modelName),(err)=>{
+        
+        fs.writeFile(`routes/${modelName}Routes.js`, renderRouteTemplate(modelName),(err)=>{
 
 
             if(err){
