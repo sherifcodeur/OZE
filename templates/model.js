@@ -34,7 +34,7 @@ const renderModelTemplate = (modelName) =>{
 
 
     //exporting the model ${modelName}
-    module.exports = { ${modelName} };`
+    module.exports =  ${modelName} ;`
 
     return modeltemplate;
 

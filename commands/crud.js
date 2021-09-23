@@ -319,8 +319,9 @@ const createDB = (nameOfFile)=>{
     createFile(`${nameOfFile}.js`,"database")
     .then(
 
+        res=>{
 
-        fs.writeFile(`${nameOfFile}.js`,renderDatabaseTemplate(),(err)=>{
+            fs.writeFile(`database/${nameOfFile}.js`,renderDatabaseTemplate(),(err)=>{
 
 
             if(err){
@@ -334,6 +335,10 @@ const createDB = (nameOfFile)=>{
 
 
         })
+        
+        }
+
+        
     )
     .catch()
 

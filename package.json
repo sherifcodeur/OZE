@@ -18,6 +18,7 @@
   "author": "sherifcodeur Echcharif El Idrissi Ismail",
   "license": "ISC",
   "dependencies": {
+    "pluralize": "^8.0.0",
     "yargs": "^17.1.1"
   }
 }

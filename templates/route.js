@@ -21,7 +21,7 @@ const renderRouteTemplate = (modelName) =>{
     
     router.get('/show/:id',${modelNameLower}Controller.${modelNameLower}_show)
     
-    router.put('/update/:id',${modelNameLower}yController.${modelNameLower}_put)
+    router.put('/update/:id',${modelNameLower}Controller.${modelNameLower}_put)
     
     router.delete('/delete/:id',${modelNameLower}Controller.${modelNameLower}_delete)
     
